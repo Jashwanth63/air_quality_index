@@ -5,15 +5,15 @@ import 'package:intl/intl.dart';
 abstract class pollutant {
   final String api_key = "a6f0e20a-b753-11ec-b909-0242ac120002";
   final String site_code = "CLDP0098";
-  final String? StartDate = "01 Apr 2023";
-  final String? EndDate = "30 Jun 2023";
+  final String? StartDate = "Sat 01 Apr 2023";
+  final String? EndDate = "Fri 30 Jun 2023";
   final String averaging = "Hourly";
   late String? Species;
   late String url;
 
 
   pollutant({this.Species}) {
-    url = "https://api.breathelondon.org/api/getClarityData/$site_code/$Species/Sat 01 Apr 2023 00:00:00 GMT/Fri 30 Jun 2023 23:59:59 GMT/$averaging?key=$api_key";
+    url = "https://api.breathelondon.org/api/getClarityData/$site_code/$Species/$StartDate 00:00:00 GMT/$EndDate 23:59:59 GMT/$averaging?key=$api_key";
   }
 
   Future<Map<String, List<double>?>> make_request() async{

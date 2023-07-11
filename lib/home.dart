@@ -16,6 +16,7 @@ class _HomeState extends State<Home> {
   List<String> Months = <String>["Apr", "May", "Jun"];
   String? def_month = "Apr";
   int? def_date = 1;
+  late double multiplier; //For Y-Axis Value Correction
 
   void make_date() {
     date = "$def_month $def_date, ${2023}";
@@ -46,7 +47,8 @@ class _HomeState extends State<Home> {
         max = values[i];
       }
     }
-    return (max + 1.0).floorToDouble();
+    multiplier = (max / 8);
+    return (max+multiplier).floorToDouble();
   }
 
   List<FlSpot> SpotList(List l){
@@ -147,7 +149,10 @@ class _HomeState extends State<Home> {
       if(hr == "23:00"){
         hr = "";
       }
-      return Text(hr);
+      return Padding(
+        padding: const EdgeInsets.only(top:7.5),
+        child: Text(hr),
+      );
     }
 
   );
@@ -203,7 +208,6 @@ class _HomeState extends State<Home> {
                     color: Colors.white54,
                   ),
                   child: DropdownButton<String>(
-
                     value: def_month,
                     items: Months.map((e) =>
                       DropdownMenuItem(
@@ -288,7 +292,7 @@ class _HomeState extends State<Home> {
             ),
             //alignment: Alignment.center,
             child: AspectRatio(
-              aspectRatio: 5.5/3,
+              aspectRatio: 5.6/3,
               child: LineChart(
                  LineChartData(
                   minX: 00.00,
@@ -305,6 +309,7 @@ class _HomeState extends State<Home> {
                    ),
                    titlesData: FlTitlesData(
                      bottomTitles: AxisTitles(
+
                        sideTitles: _calc_bottom,
                      ),
                      rightTitles: const AxisTitles(
@@ -313,10 +318,11 @@ class _HomeState extends State<Home> {
                      topTitles: const AxisTitles(
                        sideTitles: SideTitles(),
                      ),
-                     leftTitles: const AxisTitles(
+                     leftTitles: AxisTitles(
+
                        sideTitles: SideTitles(
                          showTitles: true,
-                         interval: 3.0,
+                         interval: (multiplier+1.0).floorToDouble(),
                          reservedSize: 25.0,
                        ),
                      ),
@@ -403,10 +409,10 @@ class _HomeState extends State<Home> {
                         topTitles: const AxisTitles(
                           sideTitles: SideTitles(),
                         ),
-                        leftTitles: const AxisTitles(
+                        leftTitles: AxisTitles(
                           sideTitles: SideTitles(
                             showTitles: true,
-                            interval: 10.0,
+                            interval: (multiplier+1.0).floorToDouble(),
                             reservedSize: 40.0,
                           ),
                         ),

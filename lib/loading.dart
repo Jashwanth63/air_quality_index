@@ -27,7 +27,7 @@ class _LoadingState extends State<Loading> {
       no2  = await p2.make_request();
     }
 
-    Future.delayed(Duration(seconds: 10), (){
+    Future.delayed(Duration(seconds: 3), (){
       if(result) {
         Navigator.pushReplacementNamed(context, '/home', arguments: {
           "pm25": pm25,
