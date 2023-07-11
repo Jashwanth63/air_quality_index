@@ -1,6 +1,6 @@
 # air_quality_index
 
-Flutter App, uses breathelondon API to show PM2.5 and No2 values from Apr 2023 to Jun 2023. 
+Flutter App for Android, uses breathelondon API to show PM2.5 and No2 values from Apr 2023 to Jun 2023. 
 
 # Dependencies
 Please check pubspec.yaml
