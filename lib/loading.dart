@@ -42,10 +42,7 @@ class _LoadingState extends State<Loading> {
 
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+
 
   @override
   void initState() {
